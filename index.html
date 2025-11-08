@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>👨‍👩‍👧 Family Expense Tracker Dashboard</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="logo">💰 FinFam</div>
+    <nav>
+      <a href="#" class="active">Dashboard</a>
+      <a href="#">Transactions</a>
+      <a href="#">Goals</a>
+      <a href="#">Reports</a>
+      <a href="#">Settings</a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="top-bar">
+      <div>
+        <h2>Welcome back, Family!</h2>
+        <p>Plan, save, and spend smarter with AI-powered insights.</p>
+      </div>
+      <div class="profile">
+        <input type="month" id="monthPicker" />
+        <img src="assets/images/avatar.png" alt="Profile" />
+      </div>
+    </header>
+
+    <!-- ===== Summary Cards ===== -->
+    <section class="summary-cards">
+      <div class="card"><h4>Total Balance</h4><p id="sumBalance">₹0</p></div>
+      <div class="card"><h4>Income</h4><p id="sumIncome">₹0</p></div>
+      <div class="card"><h4>Expenses</h4><p id="sumExpenses">₹0</p></div>
+      <div class="card"><h4>Savings (10%)</h4><p id="sumSavings">₹0</p></div>
+    </section>
+
+    <!-- ===== Family Setup ===== -->
+    <section class="family-section">
+      <h3>👨‍👩‍👧 Family Setup</h3>
+      <div class="setup-row">
+        <input type="number" id="incomeInput" placeholder="Enter Monthly Income (₹)" />
+        <button id="addMember">+ Add Member</button>
+        <button id="generateAIPlan">🤖 Get AI Financial Advice</button>
+      </div>
+      <div id="members" class="members"></div>
+    </section>
+
+    <!-- ===== AI Section ===== -->
+    <section class="ai-section">
+      <h3>💡 AI Financial Advice</h3>
+      <p id="aiAdvice">Add income and members to get personalized guidance...</p>
+    </section>
+
+    <!-- ===== Charts ===== -->
+    <section class="charts">
+      <div class="chart-box">
+        <h3>Monthly Flow</h3>
+        <canvas id="monthChart"></canvas>
+      </div>
+      <div class="chart-box">
+        <h3>Category Analysis</h3>
+        <canvas id="categoryChart"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
