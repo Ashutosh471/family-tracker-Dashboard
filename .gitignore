@@ -1,0 +1,42 @@
+# --- Node.js dependencies ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Environment variables ---
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# --- Build & cache files ---
+dist/
+build/
+.cache/
+.temp/
+coverage/
+
+# --- System / IDE files ---
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+.vscode/
+.idea/
+
+# --- Backup & miscellaneous ---
+*.bak
+*.old
+*.orig
+*.save
+
+# --- OS-specific files ---
+ehthumbs.db
+Icon?
+Desktop.ini
+
+# --- Optional: prevent accidental uploads ---
+package-lock.json
