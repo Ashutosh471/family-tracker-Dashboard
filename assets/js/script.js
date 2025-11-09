@@ -18,6 +18,12 @@ const sumIncome = document.getElementById("sumIncome");
 const sumExpenses = document.getElementById("sumExpenses");
 const sumSavings = document.getElementById("sumSavings");
 
+// ===== API BASE (auto switch between local + Render) =====
+const API_BASE =
+  window.location.hostname === "localhost"
+    ? "http://localhost:3000"
+    : "https://family-ai-tracker.onrender.com";
+
 // ===== HELPERS =====
 function saveAll() {
   localStorage.setItem("expenses", JSON.stringify(expenses));
@@ -104,17 +110,12 @@ generateAIPlan.onclick = async () => {
 
   aiAdvice.textContent = "⏳ Generating personalized AI financial advice...";
   try {
-    const familyData = {
-      income,
-      salaried,
-      members,
-      totalExpenses
-    };
+    const familyData = { income, salaried, members, totalExpenses };
 
-    const res = await fetch("http://localhost:3000/api/advice", {
+    const res = await fetch(`${API_BASE}/api/advice`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(familyData)
+      body: JSON.stringify(familyData),
     });
 
     const data = await res.json();
@@ -152,15 +153,15 @@ if (getAdviceBtn) {
       const familyData = {
         income: parseFloat(localStorage.getItem("income")) || 0,
         salaried: parseInt(localStorage.getItem("salaried")) || 0,
-        members: JSON.parse(localStorage.getItem("members") || "[]")
+        members: JSON.parse(localStorage.getItem("members") || "[]"),
       };
 
-      const response = await fetch("https://family-ai-tracker.onrender.com/api/advice", {
+      const response = await fetch(`${API_BASE}/api/advice`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ income, members, totalExpenses }),
+        body: JSON.stringify(familyData),
       });
-      
+
       if (!response.ok) throw new Error("Server error");
       const data = await response.json();
 
