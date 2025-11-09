@@ -155,12 +155,12 @@ if (getAdviceBtn) {
         members: JSON.parse(localStorage.getItem("members") || "[]")
       };
 
-      const response = await fetch("http://localhost:3000/api/advice", {
+      const response = await fetch("https://family-ai-tracker.onrender.com/api/advice", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(familyData)
+        body: JSON.stringify({ income, members, totalExpenses }),
       });
-
+      
       if (!response.ok) throw new Error("Server error");
       const data = await response.json();
 
